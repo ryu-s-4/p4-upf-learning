@@ -66,7 +66,7 @@ I-UPF および A-UPF をそれぞれ下記を実行して起動します．そ�
 ```
 
 今回は gNB からのパケット発出，および PDN からのパケット発出をエミュレートするための簡単な python スクリプトを用いた動作確認を行います．
-uplink の動作確認を行う場合は，UE からのトラヒックを gNB が GTP-U でカプセル化したパケットが発出されるため，下記のように実行し GTP-U カプセル化後のパケットを gNB から I-UPF に向けて発出します．
+uplink の動作確認を行う場合，UE からのトラヒックは gNB にて GTP-U でカプセル化されて I-UPF に向けて発出されるため，下記のようにスクリプトを実行し GTP-U カプセル化後のパケットを gNB から I-UPF に向けて発出します．
 
 ```
 sudo ip netns exec gNB python end_point_emulator.py \

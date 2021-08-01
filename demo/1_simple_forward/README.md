@@ -15,7 +15,7 @@ PDR (Packet Detection Rule) および FAR (Forwarding Action Rule) により，�
 
 ```
 > cd p4-upf-learning
-> p4c -a v1model -b bmv2 --p4runtime-files p4info.txt -o demo/1_simple_forwarding/ ./src/main.p4
+> p4c -a v1model -b bmv2 -o demo/1_simple_forward/ --p4runtime-files demo/1_simple_forward/p4info.txt ./src/main.p4
 > cd demo/1_simple_forward
 > ls
 p4info.txt  main.json ...

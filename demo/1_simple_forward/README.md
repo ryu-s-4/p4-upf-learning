@@ -116,7 +116,7 @@ sudo ip netns exec PDN python end_point_emulator.py \
   --teid 100
 ```
 
-uplink の時と同様に ```tcpdump``` 等によりパケットキャプチャを行うことで A-UPF にて GTP-U ヘッダによるカプセル化後に I-UPF に向けて forwarding 出来ていること，および I-UPF にて gNB に向けて forwarding 出来ていることをそれぞれ確認出来ます．uplink/downlink それぞれについて動作確認時のキャプチャデータを [capture]() に格納していますので参照ください (UE/Server からのトラヒックが UDP の場合についてもキャプチャを取得しています)．
+uplink の時と同様に ```tcpdump``` 等によりパケットキャプチャを行うことで A-UPF にて GTP-U ヘッダによるカプセル化後に I-UPF に向けて forwarding 出来ていること，および I-UPF にて gNB に向けて forwarding 出来ていることをそれぞれ確認出来ます．uplink/downlink それぞれについて動作確認時のキャプチャデータを [capture](./capture) に格納していますので参照ください (UE/Server からのトラヒックが UDP の場合についてもキャプチャを取得しています)．
 
 デモ終了後は ctrl+C で I-UPF および A-UPF を停止し，下記を実行して環境を削除します．
 

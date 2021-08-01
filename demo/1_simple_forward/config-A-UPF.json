@@ -1,0 +1,118 @@
+{ 
+  "table_entries": [ 
+    {
+      "table" : "pdr_v4",
+      "match" : {
+        "std_meta.ingress_port" : 0,
+        "meta.teid" : "_100/ffffffff", 
+        "hdr.ipv4.dst_addr" : "10.10.10.3/32"
+      },
+      "priority" : 100,
+      "action_name" : "get_info_with_decapsulation",
+      "action_params" : {
+        "rule_id" : 1,
+        "pdu_sess_type" : 4
+      }
+    },
+    {
+      "table" : "pdr_v4",
+      "match" : {
+        "std_meta.ingress_port" : 1,
+        "meta.teid" : "_0/00000000",
+        "hdr.ipv4.dst_addr" : "192.168.1.0/24"
+      },
+      "priority" : 100,
+      "action_name" : "get_info_with_encapsulation_v4",
+      "action_params" : {
+        "rule_id" : 2,
+        "pdu_sess_type" : 4,
+        "dst_addr" : "10.10.1.0",
+        "src_addr" : "10.10.10.3",
+        "dst_port" : 2152,
+        "src_port" : 49153,
+        "teid" : 100
+      }
+    },
+    {
+      "table": "pdr_v6",
+      "match": {
+        "std_meta.ingress_port" : 0,
+        "meta.teid" : "_100/ffffffff", 
+        "hdr.ipv6.dst_addr" : "fc00:0010::3/128"
+      },
+      "priority" : 100,
+      "action_name" : "get_info_with_decapsulation",
+      "action_params" : {
+        "rule_id" : 1,
+        "pdu_sess_type" : 6
+      }
+    },
+    {
+      "table" : "pdr_v6",
+      "match" : {
+        "std_meta.ingress_port" : 1,
+        "meta.teid" : "_0/00000000",
+        "hdr.ipv6.dst_addr" : "2001:0001::/64"
+      },
+      "priority" : 100,
+      "action_name" : "get_info_with_encapsulation_v6",
+      "action_params" : {
+        "rule_id" : 2,
+        "pdu_sess_type" : 6,
+        "dst_addr" : "fc00:0001::",
+        "src_addr" : "fc00:0010::3",
+        "dst_port" : 2152,
+        "src_port" : 49153,
+        "teid" : 100
+      }
+    },
+    {
+      "table" : "far",
+      "match" : {
+        "meta.rule_id" : 1
+      },
+      "action_name" : "get_far_info_from_rule_id",
+      "action_params" : {
+        "far_id" : 1,
+        "flag" : 2
+      }
+    },
+    {
+      "table" : "far",
+      "match" : {
+        "meta.rule_id" : 2
+      },
+      "action_name" : "get_far_info_from_rule_id",
+      "action_params" : {
+        "far_id" : 2,
+        "flag" : 2
+      }
+    },
+    {
+      "table" : "far_execute",
+      "match" : {
+        "meta.far_id" : 1,
+        "meta.far_flag" : 2
+      },
+      "action_name" : "far_forward",
+      "action_params" : {
+        "port" : 1,
+        "dst" : "aa:bb:cc:dd:ee:04",
+        "src" : "aa:bb:cc:dd:ee:03"
+      }
+    },
+    {
+      "table" : "far_execute",
+      "match" : {
+        "meta.far_id" : 2,
+        "meta.far_flag" : 2
+      },
+      "action_name" : "far_forward",
+      "action_params" : {
+        "port" : 0,
+        "dst" : "aa:bb:cc:dd:ee:10",
+        "src" : "aa:bb:cc:dd:ee:20"
+      }
+    }
+  ]
+}
